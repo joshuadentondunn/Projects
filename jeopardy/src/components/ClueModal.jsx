@@ -4,38 +4,17 @@ export default function ClueModal({ clue, teams, onClose }) {
   const [selectedTeam, setSelectedTeam] = useState(null)
   const [showAnswer, setShowAnswer] = useState(false)
 
-  const handleCorrect = () => {
-    if (selectedTeam === null) return
-    onClose('correct', selectedTeam)
-  }
-
-  const handleWrong = () => {
-    if (selectedTeam === null) return
-    onClose('wrong', selectedTeam)
-  }
-
-  const handleSkip = () => {
-    onClose('skip', null)
-  }
-
-  const toggleTeam = (i) => {
-    setSelectedTeam(prev => (prev === i ? null : i))
-  }
+  const toggleTeam = (i) => setSelectedTeam(prev => (prev === i ? null : i))
 
   return (
     <div className="modal-overlay">
       <div className="modal">
-        <div className="modal-meta">
-          <span className="modal-category">{clue.category}</span>
-          <span className="modal-value">${clue.value.toLocaleString()}</span>
-        </div>
+        <div className="modal-value">${clue.value.toLocaleString()}</div>
 
         <div className="modal-question">{clue.question}</div>
 
         {showAnswer && (
-          <div className="modal-answer">
-            <span className="answer-label">Answer:</span> {clue.answer}
-          </div>
+          <div className="modal-answer">{clue.answer}</div>
         )}
 
         <button className="reveal-btn" onClick={() => setShowAnswer(v => !v)}>
@@ -60,21 +39,19 @@ export default function ClueModal({ clue, teams, onClose }) {
         <div className="modal-actions">
           <button
             className="action-btn correct-btn"
-            onClick={handleCorrect}
+            onClick={() => selectedTeam !== null && onClose('correct', selectedTeam)}
             disabled={selectedTeam === null}
-            title={selectedTeam === null ? 'Select a team first' : ''}
           >
             ✓ Correct (+${clue.value.toLocaleString()})
           </button>
           <button
             className="action-btn wrong-btn"
-            onClick={handleWrong}
+            onClick={() => selectedTeam !== null && onClose('wrong', selectedTeam)}
             disabled={selectedTeam === null}
-            title={selectedTeam === null ? 'Select a team to deduct from' : ''}
           >
             ✗ Wrong (−${clue.value.toLocaleString()})
           </button>
-          <button className="action-btn skip-btn" onClick={handleSkip}>
+          <button className="action-btn skip-btn" onClick={() => onClose('skip', null)}>
             Skip / Close
           </button>
         </div>

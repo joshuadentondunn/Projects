@@ -1,15 +1,27 @@
-/* Default theme vars — overridden by JS on mount */
-:root {
-  --bg-body:          #3d0025;
-  --bg-surface:       #6b0040;
-  --bg-surface-hover: #8a0052;
-  --bg-surface-used:  #2a0018;
-  --bg-modal:         #6b0040;
-  --color-border:     #2a0018;
-  --color-accent:     #ffb7d5;
-  --color-accent-dim: #d4728a;
+/* ── Themes ─────────────────────────────────────────── */
+[data-theme="leah"] {
+  --bg:          #FFE6EE;
+  --bg-cell:     #f5c0d4;
+  --bg-hover:    #e8a0bc;
+  --bg-used:     #d4a0b5;
+  --bg-modal:    #FFE6EE;
+  --fg:          #000000;
+  --border:      #000000;
+  --value:       #8b0040;
 }
 
+[data-theme="dad"] {
+  --bg:          #CC0001;
+  --bg-cell:     #aa0001;
+  --bg-hover:    #e00001;
+  --bg-used:     #7a0001;
+  --bg-modal:    #CC0001;
+  --fg:          #ffffff;
+  --border:      #000000;
+  --value:       #D69F4C;
+}
+
+/* ── Base ───────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -17,15 +29,17 @@
 }
 
 body {
-  background-color: var(--bg-body);
-  font-family: 'Georgia', 'Times New Roman', serif;
-  min-height: 100vh;
+  background-color: var(--bg, #FFE6EE);
+  font-family: 'ITC Korinna', 'Korinna', 'Korinna BT', Georgia, 'Times New Roman', serif;
+  height: 100vh;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.4s ease;
 }
 
 #root {
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 button, input {
