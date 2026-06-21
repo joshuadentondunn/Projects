@@ -31,7 +31,6 @@ export default function App() {
   }, [])
 
   const switchGame = useCallback((game) => {
-    if (!window.confirm(`Switch to "${game.label}"? This will reset the board and scores.`)) return
     setActiveGame(game)
     setTeams(DEFAULT_TEAMS.map(t => ({ ...t })))
     setUsedClues(new Set())
