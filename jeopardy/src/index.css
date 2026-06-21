@@ -1,8 +1,8 @@
 /* ── Themes ─────────────────────────────────────────── */
 [data-theme="leah"] {
   --bg:          #FFE6EE;
-  --bg-cell:     #f5c0d4;
-  --bg-hover:    #e8a0bc;
+  --bg-cell:     #FFE6EE;
+  --bg-hover:    #f5c0d4;
   --bg-used:     #d4a0b5;
   --bg-modal:    #FFE6EE;
   --fg:          #000000;
