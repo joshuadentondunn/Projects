@@ -2,8 +2,14 @@ import { useState, useCallback } from 'react'
 import Board from './components/Board'
 import ClueModal from './components/ClueModal'
 import ScoreBoard from './components/ScoreBoard'
-import { CATEGORIES } from './data/questions'
+import { CATEGORIES as LEAH_CATEGORIES } from './data/leah-game'
+import { CATEGORIES as DAD_CATEGORIES } from './data/dad-game'
 import './App.css'
+
+const GAMES = [
+  { id: 'leah', label: "Leah's Game", categories: LEAH_CATEGORIES },
+  { id: 'dad',  label: "Dad's Game",  categories: DAD_CATEGORIES  },
+]
 
 const DEFAULT_TEAMS = [
   { name: 'Team 1', score: 0 },
@@ -12,12 +18,21 @@ const DEFAULT_TEAMS = [
 ]
 
 export default function App() {
+  const [activeGame, setActiveGame] = useState(GAMES[0])
   const [teams, setTeams] = useState(DEFAULT_TEAMS)
   const [usedClues, setUsedClues] = useState(new Set())
   const [activeClue, setActiveClue] = useState(null)
 
+  const switchGame = useCallback((game) => {
+    if (!window.confirm(`Switch to "${game.label}"? This will reset the board and all scores.`)) return
+    setActiveGame(game)
+    setTeams(DEFAULT_TEAMS.map(t => ({ ...t })))
+    setUsedClues(new Set())
+    setActiveClue(null)
+  }, [])
+
   const openClue = useCallback((categoryIndex, clueIndex) => {
-    const category = CATEGORIES[categoryIndex]
+    const category = activeGame.categories[categoryIndex]
     const clue = category.clues[clueIndex]
     setActiveClue({ categoryIndex, clueIndex, category: category.name, ...clue })
   }, [])
@@ -76,9 +91,22 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <h1 className="app-title">JEOPARDY!</h1>
-        <button className="reset-btn" onClick={resetGame}>
-          New Game
-        </button>
+        <div className="header-controls">
+          <div className="game-picker">
+            {GAMES.map(game => (
+              <button
+                key={game.id}
+                className={`game-btn ${activeGame.id === game.id ? 'active' : ''}`}
+                onClick={() => activeGame.id !== game.id && switchGame(game)}
+              >
+                {game.label}
+              </button>
+            ))}
+          </div>
+          <button className="reset-btn" onClick={resetGame}>
+            New Game
+          </button>
+        </div>
       </header>
 
       <ScoreBoard
@@ -90,7 +118,7 @@ export default function App() {
       />
 
       <Board
-        categories={CATEGORIES}
+        categories={activeGame.categories}
         usedClues={usedClues}
         onSelectClue={openClue}
       />
