@@ -1,3 +1,15 @@
+/* Default theme vars — overridden by JS on mount */
+:root {
+  --bg-body:          #3d0025;
+  --bg-surface:       #6b0040;
+  --bg-surface-hover: #8a0052;
+  --bg-surface-used:  #2a0018;
+  --bg-modal:         #6b0040;
+  --color-border:     #2a0018;
+  --color-accent:     #ffb7d5;
+  --color-accent-dim: #d4728a;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -5,20 +17,17 @@
 }
 
 body {
-  background-color: #040860;
+  background-color: var(--bg-body);
   font-family: 'Georgia', 'Times New Roman', serif;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease;
 }
 
 #root {
   min-height: 100vh;
 }
 
-button {
-  font-family: inherit;
-}
-
-input {
+button, input {
   font-family: inherit;
 }

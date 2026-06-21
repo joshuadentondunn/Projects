@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import Board from './components/Board'
 import ClueModal from './components/ClueModal'
 import ScoreBoard from './components/ScoreBoard'
@@ -7,8 +7,36 @@ import { CATEGORIES as DAD_CATEGORIES } from './data/dad-game'
 import './App.css'
 
 const GAMES = [
-  { id: 'leah', label: "Leah's Game", categories: LEAH_CATEGORIES },
-  { id: 'dad',  label: "Dad's Game",  categories: DAD_CATEGORIES  },
+  {
+    id: 'leah',
+    label: "Leah's Game",
+    categories: LEAH_CATEGORIES,
+    theme: {
+      '--bg-body':        '#3d0025',
+      '--bg-surface':     '#6b0040',
+      '--bg-surface-hover': '#8a0052',
+      '--bg-surface-used':  '#2a0018',
+      '--bg-modal':       '#6b0040',
+      '--color-border':   '#2a0018',
+      '--color-accent':   '#ffb7d5',
+      '--color-accent-dim': '#d4728a',
+    },
+  },
+  {
+    id: 'dad',
+    label: "Dad's Game",
+    categories: DAD_CATEGORIES,
+    theme: {
+      '--bg-body':        '#3d0000',
+      '--bg-surface':     '#6b0000',
+      '--bg-surface-hover': '#8a0000',
+      '--bg-surface-used':  '#2a0000',
+      '--bg-modal':       '#6b0000',
+      '--color-border':   '#2a0000',
+      '--color-accent':   '#ffd700',
+      '--color-accent-dim': '#b8960c',
+    },
+  },
 ]
 
 const DEFAULT_TEAMS = [
@@ -16,11 +44,25 @@ const DEFAULT_TEAMS = [
   { name: 'Team 2', score: 0 },
 ]
 
+function applyTheme(theme) {
+  const root = document.documentElement
+  Object.entries(theme).forEach(([k, v]) => root.style.setProperty(k, v))
+}
+
 export default function App() {
   const [activeGame, setActiveGame] = useState(GAMES[0])
   const [teams, setTeams] = useState(DEFAULT_TEAMS)
   const [usedClues, setUsedClues] = useState(new Set())
   const [activeClue, setActiveClue] = useState(null)
+
+  useEffect(() => {
+    applyTheme(activeGame.theme)
+  }, [activeGame])
+
+  // Apply initial theme on mount
+  useEffect(() => {
+    applyTheme(GAMES[0].theme)
+  }, [])
 
   const switchGame = useCallback((game) => {
     if (!window.confirm(`Switch to "${game.label}"? This will reset the board and all scores.`)) return

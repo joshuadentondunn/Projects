@@ -20,13 +20,14 @@
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 900;
   font-style: italic;
-  color: #ffd700;
+  color: var(--color-accent);
   text-shadow:
     3px 3px 0 #000,
     -1px -1px 0 #000,
-    0 0 20px rgba(255, 215, 0, 0.4);
+    0 0 20px rgba(255, 255, 255, 0.15);
   letter-spacing: 0.08em;
   user-select: none;
+  transition: color 0.4s ease;
 }
 
 .header-controls {
@@ -42,8 +43,8 @@
 
 .game-btn {
   background: transparent;
-  color: rgba(255, 215, 0, 0.55);
-  border: 2px solid rgba(255, 215, 0, 0.35);
+  color: rgba(255, 255, 255, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.25);
   padding: 7px 16px;
   font-size: 0.82rem;
   font-weight: bold;
@@ -55,21 +56,21 @@
 }
 
 .game-btn:hover {
-  border-color: #ffd700;
-  color: #ffd700;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .game-btn.active {
-  background: rgba(255, 215, 0, 0.15);
-  border-color: #ffd700;
-  color: #ffd700;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
   cursor: default;
 }
 
 .reset-btn {
   background: transparent;
-  color: #ffd700;
-  border: 2px solid #ffd700;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
   padding: 8px 20px;
   font-size: 0.85rem;
   font-weight: bold;
@@ -81,7 +82,7 @@
 }
 
 .reset-btn:hover {
-  background: rgba(255, 215, 0, 0.12);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* ── Scoreboard ─────────────────────────────────────── */
@@ -93,8 +94,8 @@
 }
 
 .team-card {
-  background: #0a0fa8;
-  border: 2px solid #b8960c;
+  background: var(--bg-surface);
+  border: 2px solid var(--color-accent-dim);
   border-radius: 8px;
   padding: 12px 14px 14px;
   min-width: 148px;
@@ -103,6 +104,7 @@
   align-items: center;
   gap: 10px;
   position: relative;
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .team-name {
@@ -124,7 +126,7 @@
 
 .team-name-input {
   background: rgba(255, 255, 255, 0.12);
-  border: 1px solid #ffd700;
+  border: 1px solid var(--color-accent);
   color: #fff;
   font-size: 0.82rem;
   font-weight: bold;
@@ -146,10 +148,11 @@
 .score {
   font-size: 1.9rem;
   font-weight: 900;
-  color: #ffd700;
+  color: var(--color-accent);
   min-width: 84px;
   text-align: center;
   line-height: 1;
+  transition: color 0.4s ease;
 }
 
 .score.negative {
@@ -157,9 +160,9 @@
 }
 
 .adj-btn {
-  background: rgba(255, 215, 0, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.5);
-  color: #ffd700;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--color-accent);
   width: 28px;
   height: 28px;
   font-size: 1.2rem;
@@ -174,7 +177,7 @@
 }
 
 .adj-btn:hover {
-  background: rgba(255, 215, 0, 0.25);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .remove-team-btn {
@@ -197,8 +200,8 @@
 
 .add-team-btn {
   background: transparent;
-  border: 2px dashed rgba(255, 215, 0, 0.35);
-  color: rgba(255, 215, 0, 0.5);
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.4);
   padding: 12px 20px;
   font-size: 0.85rem;
   font-weight: bold;
@@ -210,8 +213,8 @@
 }
 
 .add-team-btn:hover {
-  border-color: #ffd700;
-  color: #ffd700;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 /* ── Board ──────────────────────────────────────────── */
@@ -229,14 +232,15 @@
 }
 
 .board-cell {
-  background: #0604c0;
-  border: 3px solid #05038a;
+  background: var(--bg-surface);
+  border: 3px solid var(--color-border);
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 10px 6px;
+  transition: background 0.4s ease;
 }
 
 .category-cell {
@@ -256,30 +260,31 @@
 }
 
 .clue-cell.available:hover {
-  background: #1a12e8;
+  background: var(--bg-surface-hover);
   transform: scale(1.025);
   z-index: 1;
   position: relative;
 }
 
 .clue-cell.used {
-  background: #03028a;
-  opacity: 0.4;
+  background: var(--bg-surface-used);
+  opacity: 0.45;
   cursor: default;
 }
 
 .clue-value {
   font-size: clamp(1.1rem, 2.2vw, 1.9rem);
   font-weight: 900;
-  color: #ffd700;
+  color: var(--color-accent);
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  transition: color 0.4s ease;
 }
 
 /* ── Modal ──────────────────────────────────────────── */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(2, 4, 50, 0.9);
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -288,8 +293,8 @@
 }
 
 .modal {
-  background: #0604c0;
-  border: 4px solid #ffd700;
+  background: var(--bg-modal);
+  border: 4px solid var(--color-accent);
   border-radius: 12px;
   padding: 40px 44px;
   max-width: 800px;
@@ -298,8 +303,9 @@
   flex-direction: column;
   gap: 22px;
   box-shadow:
-    0 0 0 1px #b8960c,
-    0 0 60px rgba(255, 215, 0, 0.15);
+    0 0 0 1px var(--color-accent-dim),
+    0 0 60px rgba(0, 0, 0, 0.4);
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .modal-meta {
@@ -320,7 +326,8 @@
 .modal-value {
   font-size: 1.8rem;
   font-weight: 900;
-  color: #ffd700;
+  color: var(--color-accent);
+  transition: color 0.4s ease;
 }
 
 .modal-question {
@@ -330,17 +337,19 @@
   line-height: 1.55;
   font-style: italic;
   padding: 4px 0;
+  white-space: pre-line;
 }
 
 .modal-answer {
-  background: rgba(255, 215, 0, 0.08);
-  border: 1px solid rgba(255, 215, 0, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 6px;
   padding: 14px 22px;
   text-align: center;
   font-size: 1.15rem;
-  color: #ffd700;
+  color: var(--color-accent);
   line-height: 1.4;
+  transition: color 0.4s ease;
 }
 
 .answer-label {
@@ -349,7 +358,7 @@
   font-style: normal;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(255, 215, 0, 0.6);
+  color: rgba(255, 255, 255, 0.5);
   margin-right: 8px;
 }
 
@@ -413,14 +422,14 @@
 }
 
 .team-btn:hover {
-  border-color: #ffd700;
-  color: #ffd700;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .team-btn.selected {
-  background: rgba(255, 215, 0, 0.18);
-  border-color: #ffd700;
-  color: #ffd700;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 /* ── Modal actions ──────────────────────────────────── */
@@ -478,7 +487,7 @@
   border: 2px solid rgba(255, 255, 255, 0.25);
 }
 
-.skip-btn:hover {
-  background: rgba(255, 255, 255, 0.18) !important;
+.skip-btn:not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.2) !important;
   color: #fff !important;
 }
