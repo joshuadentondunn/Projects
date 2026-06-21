@@ -7,8 +7,8 @@ import { CATEGORIES as DAD_CATEGORIES } from './data/dad-game'
 import './App.css'
 
 const GAMES = [
-  { id: 'leah', label: "Leah's Game", categories: LEAH_CATEGORIES },
-  { id: 'dad',  label: "Dad's Game",  categories: DAD_CATEGORIES  },
+  { id: 'leah', label: "Leah's Game", banner: "Leah's 26th Birthday", categories: LEAH_CATEGORIES },
+  { id: 'dad',  label: "Dad's Game",  banner: "John's Big 58",        categories: DAD_CATEGORIES  },
 ]
 
 const DEFAULT_TEAMS = [
@@ -81,6 +81,7 @@ export default function App() {
   return (
     <div className="app" data-theme={activeGame.id}>
       <div className="top-bar">
+        <h1 className="game-banner">{activeGame.banner}</h1>
         <div className="game-picker">
           {GAMES.map(game => (
             <button
