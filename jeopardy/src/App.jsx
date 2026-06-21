@@ -93,6 +93,8 @@ export default function App() {
         </div>
       </div>
 
+      <h1 className="game-banner">{activeGame.banner}</h1>
+
       <ScoreBoard
         teams={teams}
         onUpdateName={updateTeamName}
@@ -100,8 +102,6 @@ export default function App() {
         onRemoveTeam={removeTeam}
         onAdjustScore={adjustScore}
       />
-
-      <h1 className="game-banner">{activeGame.banner}</h1>
 
       <Board
         categories={activeGame.categories}

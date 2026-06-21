@@ -20,14 +20,13 @@
 
 .game-banner {
   text-align: center;
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
   font-weight: 900;
   font-style: italic;
   color: var(--fg);
   letter-spacing: 0.04em;
   user-select: none;
   flex-shrink: 0;
-  margin-bottom: 4px;
 }
 
 .game-picker {
