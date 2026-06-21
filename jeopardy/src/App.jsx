@@ -14,7 +14,6 @@ const GAMES = [
 const DEFAULT_TEAMS = [
   { name: 'Team 1', score: 0 },
   { name: 'Team 2', score: 0 },
-  { name: 'Team 3', score: 0 },
 ]
 
 export default function App() {
