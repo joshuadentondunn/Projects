@@ -12,13 +12,13 @@
 
 [data-theme="dad"] {
   --bg:          #CC0001;
-  --bg-cell:     #aa0001;
-  --bg-hover:    #e00001;
+  --bg-cell:     #CC0001;
+  --bg-hover:    #e80001;
   --bg-used:     #7a0001;
   --bg-modal:    #CC0001;
   --fg:          #ffffff;
   --border:      #000000;
-  --value:       #D69F4C;
+  --value:       #ffffff;
 }
 
 /* ── Base ───────────────────────────────────────────── */
