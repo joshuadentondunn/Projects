@@ -76,6 +76,7 @@ export const CATEGORIES = [
         value: 600,
         question: "Well it's turn and face the stars and stripes, it's fighting back them butterflies. It's call it in the air alright, yes sir, we want the ball.",
         answer: "The Boys of Fall — Kenny Chesney",
+        dailyDouble: true,
       },
       {
         value: 800,
@@ -136,6 +137,7 @@ export const CATEGORIES = [
         value: 600,
         question: "What is Leah's MOC from Nomad East?",
         answer: "Smoked Salmon Salad",
+        dailyDouble: true,
       },
       {
         value: 800,

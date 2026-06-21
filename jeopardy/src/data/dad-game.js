@@ -56,6 +56,7 @@ export const CATEGORIES = [
         value: 1000,
         question: "Livin' easy, lovin' free. Season ticket on a one-way ride. Askin' nothin', leave me be.",
         answer: "Highway to Hell",
+        dailyDouble: true,
       },
     ],
   },
@@ -106,6 +107,7 @@ export const CATEGORIES = [
         value: 600,
         question: "A score of two under par on a single hole goes by this name.",
         answer: "Eagle",
+        dailyDouble: true,
       },
       {
         value: 800,
