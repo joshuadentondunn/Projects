@@ -81,7 +81,6 @@ export default function App() {
   return (
     <div className="app" data-theme={activeGame.id}>
       <div className="top-bar">
-        <h1 className="game-banner">{activeGame.banner}</h1>
         <div className="game-picker">
           {GAMES.map(game => (
             <button
@@ -102,6 +101,8 @@ export default function App() {
         onRemoveTeam={removeTeam}
         onAdjustScore={adjustScore}
       />
+
+      <h1 className="game-banner">{activeGame.banner}</h1>
 
       <Board
         categories={activeGame.categories}

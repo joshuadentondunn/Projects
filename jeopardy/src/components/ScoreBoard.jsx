@@ -80,11 +80,6 @@ export default function ScoreBoard({ teams, onUpdateName, onAddTeam, onRemoveTea
           onAdjustScore={onAdjustScore}
         />
       ))}
-      {teams.length < 8 && (
-        <button className="add-team-btn" onClick={onAddTeam}>
-          + Add Team
-        </button>
-      )}
     </div>
   )
 }

@@ -13,23 +13,21 @@
 .top-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-shrink: 0;
   padding: 4px 0;
-  position: relative;
 }
 
 .game-banner {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  text-align: center;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
   font-weight: 900;
   font-style: italic;
   color: var(--fg);
   letter-spacing: 0.04em;
   user-select: none;
-  white-space: nowrap;
+  flex-shrink: 0;
+  margin-bottom: 4px;
 }
 
 .game-picker {
