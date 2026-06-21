@@ -35,7 +35,7 @@ export default function App() {
     const category = activeGame.categories[categoryIndex]
     const clue = category.clues[clueIndex]
     setActiveClue({ categoryIndex, clueIndex, category: category.name, ...clue })
-  }, [])
+  }, [activeGame])
 
   const closeClue = useCallback(
     (outcome, teamIndex) => {
