@@ -16,15 +16,20 @@
   justify-content: space-between;
   flex-shrink: 0;
   padding: 4px 0;
+  position: relative;
 }
 
 .game-banner {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: clamp(1.4rem, 3vw, 2.4rem);
   font-weight: 900;
   font-style: italic;
   color: var(--fg);
   letter-spacing: 0.04em;
   user-select: none;
+  white-space: nowrap;
 }
 
 .game-picker {
