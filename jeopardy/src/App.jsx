@@ -79,35 +79,39 @@ export default function App() {
 
   return (
     <div className="app" data-theme={activeGame.id}>
-      <div className="top-bar">
-        <div className="game-picker">
-          {GAMES.map(game => (
-            <button
-              key={game.id}
-              className={`game-btn ${activeGame.id === game.id ? 'active' : ''}`}
-              onClick={() => activeGame.id !== game.id && switchGame(game)}
-            >
-              {game.label}
-            </button>
-          ))}
+      <aside className="sidebar">
+        <ScoreBoard
+          teams={teams}
+          onUpdateName={updateTeamName}
+          onAddTeam={addTeam}
+          onRemoveTeam={removeTeam}
+          onAdjustScore={adjustScore}
+        />
+      </aside>
+
+      <div className="main">
+        <div className="top-bar">
+          <div className="game-picker">
+            {GAMES.map(game => (
+              <button
+                key={game.id}
+                className={`game-btn ${activeGame.id === game.id ? 'active' : ''}`}
+                onClick={() => activeGame.id !== game.id && switchGame(game)}
+              >
+                {game.label}
+              </button>
+            ))}
+          </div>
         </div>
+
+        <h1 className="game-banner">{activeGame.banner}</h1>
+
+        <Board
+          categories={activeGame.categories}
+          usedClues={usedClues}
+          onSelectClue={openClue}
+        />
       </div>
-
-      <h1 className="game-banner">{activeGame.banner}</h1>
-
-      <ScoreBoard
-        teams={teams}
-        onUpdateName={updateTeamName}
-        onAddTeam={addTeam}
-        onRemoveTeam={removeTeam}
-        onAdjustScore={adjustScore}
-      />
-
-      <Board
-        categories={activeGame.categories}
-        usedClues={usedClues}
-        onSelectClue={openClue}
-      />
 
       {activeClue && (
         <ClueModal clue={activeClue} teams={teams} onClose={closeClue} />
