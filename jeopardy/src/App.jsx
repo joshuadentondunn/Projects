@@ -79,18 +79,18 @@ export default function App() {
 
   return (
     <div className="app" data-theme={activeGame.id}>
-      <aside className="sidebar">
-        <ScoreBoard
-          teams={teams}
-          onUpdateName={updateTeamName}
-          onAddTeam={addTeam}
-          onRemoveTeam={removeTeam}
-          onAdjustScore={adjustScore}
-        />
-      </aside>
-
-      <div className="main">
-        <div className="top-bar">
+      <div className="top-bar">
+        <div className="top-left">
+          <ScoreBoard
+            teams={teams}
+            onUpdateName={updateTeamName}
+            onAddTeam={addTeam}
+            onRemoveTeam={removeTeam}
+            onAdjustScore={adjustScore}
+          />
+        </div>
+        <h1 className="game-banner">{activeGame.banner}</h1>
+        <div className="top-right">
           <div className="game-picker">
             {GAMES.map(game => (
               <button
@@ -103,15 +103,13 @@ export default function App() {
             ))}
           </div>
         </div>
-
-        <h1 className="game-banner">{activeGame.banner}</h1>
-
-        <Board
-          categories={activeGame.categories}
-          usedClues={usedClues}
-          onSelectClue={openClue}
-        />
       </div>
+
+      <Board
+        categories={activeGame.categories}
+        usedClues={usedClues}
+        onSelectClue={openClue}
+      />
 
       {activeClue && (
         <ClueModal clue={activeClue} teams={teams} onClose={closeClue} />
