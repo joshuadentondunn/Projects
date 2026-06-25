@@ -10,7 +10,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 14px 10px 14px 14px;
   flex-shrink: 0;
 }

@@ -8,7 +8,7 @@ import './App.css'
 
 const GAMES = [
   { id: 'leah', label: "Leah's Game", banner: "Leah's 26th Birthday", categories: LEAH_CATEGORIES },
-  { id: 'dad',  label: "Dad's Game",  banner: "Johnporday",        categories: DAD_CATEGORIES  },
+  { id: 'dad',  label: "Dad's Game",  banner: "Johnpardy",        categories: DAD_CATEGORIES  },
 ]
 
 const DEFAULT_TEAMS = [
