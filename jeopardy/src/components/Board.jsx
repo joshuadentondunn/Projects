@@ -24,12 +24,7 @@ export default function Board({ categories, usedClues, onSelectClue }) {
                 onClick={isUsed ? undefined : () => onSelectClue(colIndex, rowIndex)}
               >
                 {!isUsed && (
-                  <>
-                    <span className="clue-value">${value.toLocaleString()}</span>
-                    {categories[colIndex].clues[rowIndex].dailyDouble && (
-                      <span className="dd-badge">DD</span>
-                    )}
-                  </>
+                  <span className="clue-value">${value.toLocaleString()}</span>
                 )}
               </div>
             )
